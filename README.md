@@ -1,5 +1,13 @@
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/wordmark-dark.svg"><img src="docs/wordmark-light.svg" alt="career-ops" width="250" height="56"></picture></p>
 
+<table align="center"><tr><td>
+
+### 🔵 Modified fork by [@Potato-Naruto](https://github.com/Potato-Naruto)
+
+This is **not** the upstream project. It is a fork of [career-ops-hq/career-ops](https://github.com/career-ops-hq/career-ops) where I rebuilt the web dashboard: a **blue theme**, an **all-options Command Center**, and **local Ollama evaluation**. [Jump to what I changed ↓](#-what-i-changed-in-this-fork)
+
+</td></tr></table>
+
 <p align="center">The open-source AI job search agent.</p>
 
 <p align="center">
@@ -27,13 +35,26 @@
 
 <p align="center"><a href="https://github.com/santifer"><img src="docs/avatar-santifer.png" width="48" height="48" align="middle" alt="Santiago Fernández de Valderrama Aparicio"></a>&nbsp;&nbsp;Created by <a href="https://github.com/santifer"><strong>@santifer</strong></a></p>
 
-## What's new in this fork
+## 🔵 What I changed in this fork
 
-This fork by [@Potato-Naruto](https://github.com/Potato-Naruto) upgrades the local web dashboard in [`web/`](web/):
+Everything below is my work on top of upstream, and lives in [`web/`](web/) (the local dashboard). The CLI, modes and scoring engine are untouched.
 
-- **Blue theme.** The whole dashboard is re-themed from orange to blue, with deep navy surfaces in dark mode and ice-blue in light mode.
-- **Command Center (`/commands`).** Every career-ops mode on one searchable page, grouped into Find roles, Evaluate, CV & documents, Apply & network, Interview & offer, Track & learn, and Setup. Modes with an in-app page get an **Open** button; the rest show a copyable command.
-- **Local AI with Ollama (`/ollama`).** See whether Ollama is running, pick from your installed models, and evaluate a pasted job description or an ATS posting URL on your own machine. It runs the repo's `ollama-eval.mjs`, streams the output live, and merges the result into your tracker. Free, private, no API key, and the endpoint is restricted to loopback so your CV never leaves your computer.
+| Change | What you get |
+|---|---|
+| **Blue theme** | The whole dashboard is re-themed from orange to blue: deep navy surfaces in dark mode, ice-blue in light mode, a blue app icon, and blue glows and gradients throughout. |
+| **Command Center** at `/commands` | All 40+ career-ops modes on one searchable page, grouped into Find roles, Evaluate, CV & documents, Apply & network, Interview & offer, Track & learn, and Setup. Modes with an in-app page get an **Open** button; the rest show a copyable command. |
+| **Local AI with Ollama** at `/ollama` | See whether Ollama is running, pick from your installed models, and evaluate a pasted job description or an ATS posting URL on your own machine. Output streams live, then the report and tracker row are saved. Free, private, no API key. |
+| **New nav entries** | "All options" and "Local AI" in the sidebar and mobile nav. |
+
+**How the Ollama integration works:** the page runs the repo's existing `ollama-eval.mjs` (so reports match the CLI's), then `merge-tracker.mjs`. The endpoint is restricted to loopback, so your CV and the job description never leave your computer. Your chosen model is saved to `config/ollama.json`.
+
+**Limits:** Ollama covers the **evaluate** flow only. Tailored PDFs, the apply assistant and outreach still use one of the supported AI CLIs. A posting URL only works for Greenhouse, Lever, Ashby, Workday and SmartRecruiters; for anything else, paste the job description.
+
+**Files I added or changed**
+- New: `web/src/app/commands/`, `web/src/app/ollama/`, `web/src/app/api/ollama/` (status, model save, streaming evaluate), `web/src/components/commands-view.tsx`, `web/src/components/ollama-view.tsx`, `web/src/lib/commands-catalog.ts`, `web/src/lib/ollama.mjs`
+- Changed: `web/src/app/globals.css` (blue palette), `web/src/app/icon.svg`, `web/src/lib/nav-items.ts`, and the hardcoded orange hues in 9 components
+
+**Run it**
 
 ```bash
 cd web
@@ -41,7 +62,8 @@ npm ci
 npm run dev   # http://localhost:3000
 ```
 
-Ollama evaluation covers the **evaluate** flow only. Tailored PDFs, the apply assistant and outreach still use one of the supported AI CLIs.
+Then open **All options** or **Local AI** in the sidebar. The upstream web test suite (1,625 tests) passes with these changes.
+
 
 
 <p align="center">
