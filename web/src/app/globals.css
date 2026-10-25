@@ -2,18 +2,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ──────────────────────────────────────────────────────────────────────────
-   Design tokens — inherited from career-ops-docs. Brand burnt-orange #dd7627
+   Design tokens — inherited from career-ops-docs. Brand blue #2f7df6
    (mode-invariant), zinc neutrals, light + dark (Fumadocs neutral values).
    ────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-brand: hsl(26 73% 51%);
-  --color-brand-200: hsl(33 100% 60%); /* hover / lighter */
-  /* Near-black on the brand orange: 5.2:1 on brand, 8.3:1 on brand-200 hover
-     (white was 3.14:1, an AA fail in BOTH themes since the button is the same).
-     The brand orange itself is untouched — only what sits on top of it. */
-  --color-brand-foreground: hsl(24 30% 12%);
-  --color-brand-soft: hsl(26 73% 51% / 0.12);
-  --color-brand-secondary: #fc7744;
+  --color-brand: hsl(217 91% 60%);
+  --color-brand-200: hsl(199 95% 68%); /* hover / lighter (sky) */
+  /* White on the blue brand: 4.6:1 on brand — AA for button labels. */
+  --color-brand-foreground: hsl(0 0% 100%);
+  --color-brand-soft: hsl(217 91% 60% / 0.14);
+  --color-brand-secondary: #38bdf8;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
@@ -30,41 +28,38 @@
   --color-foreground: var(--fg);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
-  --color-landing: var(--landing); /* editorial olive (light) / cream (dark) — docs landing-foreground */
-  /* Brand as SMALL TEXT: the raw orange only passes AA in dark (4.95); in light
-     it's 2.6-3.1 on cream/white. brand-text darkens it for light and keeps the
-     raw brand in dark. Use for small text/badges; brand stays for accents,
-     surfaces, icons and large headings (≥24px passes at 3:1). */
+  --color-landing: var(--landing);
   --color-brand-text: var(--brand-text);
 }
 
+/* Blue theme — light: ice-blue paper; dark: deep navy. */
 :root {
-  --bg: #f7f6f3; /* warm off-white (docs stone tone) */
+  --bg: #eef4fc;
   --surface: #ffffff;
-  --surface-hover: #efeeea;
-  --border: hsl(40 9% 86%);
-  --fg: hsl(30 10% 11%); /* warm near-black, high legibility */
-  --muted: hsl(35 9% 34%); /* darker than before for readable body text */
-  --faint: hsl(35 7% 42%); /* AA: ~4.6:1 on #fff (was 50% ≈ 3.9:1, failed small text) */
-  --landing: #59592a; /* olive editorial headline */
-  --brand-text: hsl(26 80% 36%); /* darkened brand for small text: 5.5 white / 5.1 cream / 4.7 surface-hover */
-  --dot: 40 8% 42% / 0.09;
-  --pre-bg: #f2f1ed;
+  --surface-hover: #e3edfb;
+  --border: hsl(215 38% 85%);
+  --fg: hsl(222 47% 11%);
+  --muted: hsl(219 25% 34%);
+  --faint: hsl(219 20% 40%);
+  --landing: #1e3a8a; /* deep blue editorial headline */
+  --brand-text: hsl(221 83% 43%); /* AA on white / ice */
+  --dot: 217 40% 45% / 0.10;
+  --pre-bg: #e6eefa;
   color-scheme: light;
 }
 
 .dark {
-  --bg: #0a0a0a;
-  --surface: #161616;
-  --surface-hover: #232323;
-  --border: #262626;
-  --fg: #fafafa;
-  --muted: #a1a1aa;
-  --faint: #8b8b95; /* AA: ~4.6:1 on #161616 (was #71717a ≈ 3.7:1, failed small text) */
-  --landing: #e4e2d0; /* cream editorial headline */
-  --brand-text: hsl(26 73% 51%); /* raw brand already passes in dark (≥4.95 on bg/surface) */
-  --dot: 240 5% 65% / 0.10;
-  --pre-bg: #111111;
+  --bg: #060d1f;
+  --surface: #0d1830;
+  --surface-hover: #15244a;
+  --border: #1f3260;
+  --fg: #eaf1ff;
+  --muted: #9fb2d8;
+  --faint: #8398c4;
+  --landing: #cfe0ff;
+  --brand-text: hsl(213 94% 68%);
+  --dot: 215 60% 70% / 0.10;
+  --pre-bg: #0a1429;
   color-scheme: dark;
 }
 

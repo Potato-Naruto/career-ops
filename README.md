@@ -27,6 +27,23 @@
 
 <p align="center"><a href="https://github.com/santifer"><img src="docs/avatar-santifer.png" width="48" height="48" align="middle" alt="Santiago Fernández de Valderrama Aparicio"></a>&nbsp;&nbsp;Created by <a href="https://github.com/santifer"><strong>@santifer</strong></a></p>
 
+## What's new in this fork
+
+This fork by [@Potato-Naruto](https://github.com/Potato-Naruto) upgrades the local web dashboard in [`web/`](web/):
+
+- **Blue theme.** The whole dashboard is re-themed from orange to blue, with deep navy surfaces in dark mode and ice-blue in light mode.
+- **Command Center (`/commands`).** Every career-ops mode on one searchable page, grouped into Find roles, Evaluate, CV & documents, Apply & network, Interview & offer, Track & learn, and Setup. Modes with an in-app page get an **Open** button; the rest show a copyable command.
+- **Local AI with Ollama (`/ollama`).** See whether Ollama is running, pick from your installed models, and evaluate a pasted job description or an ATS posting URL on your own machine. It runs the repo's `ollama-eval.mjs`, streams the output live, and merges the result into your tracker. Free, private, no API key, and the endpoint is restricted to loopback so your CV never leaves your computer.
+
+```bash
+cd web
+npm ci
+npm run dev   # http://localhost:3000
+```
+
+Ollama evaluation covers the **evaluate** flow only. Tailored PDFs, the apply assistant and outreach still use one of the supported AI CLIs.
+
+
 <p align="center">
 <strong>Months of sending CVs into&nbsp;silence.</strong><br>
 So I built the filter I&nbsp;needed.
